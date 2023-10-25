@@ -34,6 +34,7 @@ def tap(x, y):
     global tapCounter
     tapCounter += 1
     clear()
+    goto(0, 0)
     write(f'taps: {tapCounter}', align="center", font=('Arial', 25, 'normal'))
     color("black")
 
@@ -46,6 +47,7 @@ def tap(x, y):
         hide[spot] = False
         hide[mark] = False
         state['mark'] = None
+        
 
 
 def draw():
@@ -65,9 +67,14 @@ def draw():
     if mark is not None and hide[mark]:
         x, y = xy(mark)
         up()
-        goto(x + 2, y)
-        color('black')
-        write(tiles[mark], font=('Arial', 30, 'normal'))
+        if tiles[mark] <10:
+            goto(x+12, y) 
+            color('black')
+            write(tiles[mark], align= "left", font=('Arial', 30, 'normal'))
+        else:
+            goto(x+3, y)
+            color('black')
+            write(tiles[mark], align= "left", font=('Arial', 30, 'normal'))
 
     update()
     ontimer(draw, 100)
