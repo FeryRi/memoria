@@ -1,6 +1,7 @@
 from random import *
 from turtle import *
 from freegames import path
+import time 
 
 car = path('car.gif')
 tiles = list(range(32)) * 2
@@ -18,6 +19,10 @@ def square(x, y):
         forward(50)
         left(90)
     end_fill()
+    for count in range(4):
+        forward(50)
+        left(90)
+    end_fill()
 
 def index(x, y):
     "Convert (x, y) coordinates to tiles index."
@@ -26,7 +31,11 @@ def index(x, y):
 def xy(count):
     "Convert tiles count to (x, y) coordinates."
     return (count % 8) * 50 - 200, (count // 8) * 50 - 200
-
+    x += 25
+    y += 25
+    return x, y
+    
+    
 def tap(x, y):
     "Update mark and hidden tiles based on tap."
     
